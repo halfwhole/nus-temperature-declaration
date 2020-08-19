@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from datetime import date
+from datetime import datetime
 from getpass import getpass
 
 VAFS_URL = "https://vafs.nus.edu.sg/adfs/oauth2/authorize?response_type=code&client_id=97F0D1CACA7D41DE87538F9362924CCB-184318&resource=sg_edu_nus_oauth&redirect_uri=https%3A%2F%2Fmyaces.nus.edu.sg%3A443%2Fhtd%2Fhtd"
@@ -18,12 +18,13 @@ def login(username, password):
     return jsessionID
 
 def submitTemperature(jsessionID, temperature):
-    tempDeclOn = date.today().strftime('%d/%m/%Y')
+    tempDeclOn = datetime.now().strftime('%d/%m/%Y')
+    declFrequency = datetime.now().strftime('%p')[0] # 'A' for AM, 'P' for PM
     tempParams = {
         'actionName': 'dlytemperature',
         'webdriverFlag': '',
         'tempDeclOn': tempDeclOn,
-        'declFrequency': 'A',
+        'declFrequency': declFrequency,
         'symptomsFlag': 'N',
         'familySymptomsFlag': 'N',
         'temperature': temperature
