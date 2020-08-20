@@ -1,0 +1,2 @@
+username: nusstu\e0123456
+password: <password>
