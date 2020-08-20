@@ -17,6 +17,8 @@ def login(username, password):
     }
     vafsResponse = requests.post(VAFS_URL, data=vafsParams)
     jsessionID = vafsResponse.cookies.get('JSESSIONID')
+    if not jsessionID:
+        raise Exception('Incorrect login credentials')
     return jsessionID
 
 def submitTemperature(jsessionID, temperature):
@@ -86,19 +88,23 @@ def readUsernamePassword():
 
 
 if __name__ == '__main__':
-    isCheck = readIsCheck()
     try:
         temperature = readTemperature()
     except Exception as e:
         print('Please provide your temperature as an argument.')
         exit()
-    username, password = readUsernamePassword()
 
-    if isCheck:
+    username, password = readUsernamePassword()
+    try:
         jsessionID = login(username, password)
+    except Exception as e:
+        print('Your login credentials are invalid.')
+        exit()
+
+    isCheck = readIsCheck()
+    if isCheck:
         tempResponseText = getTemperature(jsessionID)
     else:
-        jsessionID = login(username, password)
         tempResponseText = submitTemperature(jsessionID, temperature)
         print('Submitted temperature of %s°C' % temperature)
 
