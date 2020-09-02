@@ -1,6 +1,6 @@
 # nus-temperature-declaration
 
-A quick little python script I wrote this morning to help with my temperature declaration at NUS.
+A quick little python script I wrote to help with my temperature declaration at NUS.
 
 ![Screenshot of using the temperature script](./screenshot.png)
 
@@ -18,4 +18,12 @@ If you don't want to enter your username and password every time, you can store 
 
 Copy `config-example.txt` to `config.txt`, replacing the username and password fields accordingly.
 
-Note: with a few additional steps, this can be modified to automate the temperature declaration process entirely using cron jobs. Please don't do that! It kind of defeats the purpose of temperature declarations in the first place.
+## The Dark Side
+
+If you wish to automate your temperature declarations for whatever reason, you can put `auto.sh` in your crontab.
+
+It acts a failsafe: if you haven't declared your temperature by then, it declares a random one for you. But of course, if you're a good person and already declare your temperature regularly, it will have no effect.
+
+This requires that you input your username and password in `config.txt` beforehand.
+
+[Disclaimer: not saying that I do this, or that I recommend you to do this! It was just a fun little thing to do.]
