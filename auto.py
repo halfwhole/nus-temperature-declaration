@@ -5,7 +5,7 @@ from temperature import *
 def hasDeclared(tempData):
     lastDeclaredDate = tempData[0][1].split(', ')[0]
     todayDate = datetime.now().strftime('%d/%m/%Y')
-    if lastDeclaredDate != todayDate: return false
+    if lastDeclaredDate != todayDate: return False
 
     lastTempAM = tempData[0][2]
     lastTempPM = tempData[0][5]
