@@ -2,6 +2,8 @@ from datetime import datetime
 from random import choice
 from temperature import *
 
+LOG_FILE = 'temp.log'
+
 def hasDeclared(tempData):
     lastDeclaredDate = tempData[0][1].split(', ')[0]
     todayDate = datetime.now().strftime('%d/%m/%Y')
@@ -20,7 +22,7 @@ def getRandomTemperature():
     return tempStr
 
 def logMessage(msg):
-    with open('log.log', 'a') as f:
+    with open(LOG_FILE, 'a') as f:
         f.write('%s' % msg)
 
 if __name__ == '__main__':
