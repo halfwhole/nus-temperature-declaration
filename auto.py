@@ -26,7 +26,7 @@ def logMessage(msg):
         f.write('%s' % msg)
 
 if __name__ == '__main__':
-    logMessage('[%s] ' % datetime.now().strftime('%D %H:%M:%S'))
+    logMessage('[%s] ' % datetime.now().strftime('%d/%m/%y %H:%M:%S'))
     username, password = readUsernamePassword()
     jsessionID = login(username, password)
     tempResponseText = getTemperature(jsessionID)
