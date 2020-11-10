@@ -17,7 +17,7 @@ def hasDeclared(tempData):
     else:    return lastTempPM != ''
 
 def getRandomTemperature():
-    temp = choice(range(362, 374)) / 10
+    temp = choice(range(360, 372)) / 10
     tempStr = '%.1f' % temp
     return tempStr
 
