@@ -22,8 +22,6 @@ Copy `config-example.txt` to `config.txt`, replacing the username and password f
 
 If you wish to automate your temperature declarations for whatever reason, you can put `auto.sh` in your crontab.
 
-It acts a failsafe: if you haven't declared your temperature by then, it declares a random one for you. But of course, if you're a good person and already declare your temperature regularly, it will have no effect.
+It acts a failsafe: if you haven't declared your temperature by then, it declares a random one for you. But if you've already declared your temperature for the day, it will have no effect.
 
 This requires that you input your username and password in `config.txt` beforehand.
-
-[Disclaimer: not saying that I do this, or that I recommend you to do this! It was just a fun little thing to do.]
