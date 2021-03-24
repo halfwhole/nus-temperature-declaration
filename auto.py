@@ -28,7 +28,11 @@ def logMessage(msg):
 if __name__ == '__main__':
     logMessage('[%s] ' % datetime.now().strftime('%d/%m/%y %H:%M:%S'))
     username, password = readUsernamePassword()
-    jsessionID = login(username, password)
+    try:
+        jsessionID = login(username, password)
+    except Exception as e:
+        logMessage('Your login credentials are invalid\n')
+        exit()
     tempResponseText = getTemperature(jsessionID)
     tempData = parseTemperatureTable(tempResponseText)
 
