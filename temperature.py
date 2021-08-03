@@ -76,15 +76,21 @@ def getOptdictArgs():
     optdict = dict(optlist)
     return optdict, args
 
-def readUsernamePassword():
-    with open('config.txt', 'r') as f:
-        d = dict(line.strip().split(': ') for line in f.readlines())
-        if 'username' in d and 'password' in d:
-            return d['username'], d['password']
-
+def getUsernamePassword():
     username = input('Username (nusstu\e0123456): ')
     password = getpass('Password: ')
     return username, password
+
+def readUsernamePassword():
+    try:
+        with open('config.txt', 'r') as f:
+            d = dict(line.strip().split(': ') for line in f.readlines())
+            if 'username' in d and 'password' in d:
+                return d['username'], d['password']
+            else:
+                return getUsernamePassword()
+    except FileNotFoundError:
+        return getUsernamePassword()
 
 
 if __name__ == '__main__':
